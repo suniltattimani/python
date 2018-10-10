@@ -1,14 +1,26 @@
 import pdb
 #pdb.set_trace()
-f=open("dict.txt","r")
-f2=open("dict.txt","w")
-f1=open("sunil.txt","r")
-fread=f.readlines()
-#f2write=f2.writelines()
-f1read=f.readlines()
+'''
+f = open("dict.txt", "r")
+fread=f.read()
+print(fread)
 f.close()
+f1 = open("sunil.txt", "a")
+f1.write(fread)
 f1.close()
-f2.close()
-for i in f1read:
-    combine= (f2.writelines().append(i))
-    print combine
+'''
+
+file1 = raw_input("Enter file to be read from: ")
+file2 = raw_input("Enter file to be appended to: ")
+print (file1)
+print (file2)
+fin = open(file1, "r")
+file1data = fin.read()
+fin.close()
+fout = open(file2, "a")
+fout.write('\n')
+fout.write('********new file content being appended from' + file1)
+#fout.write(file1)
+fout.write('\n')
+fout.write(file1data)
+fout.close()

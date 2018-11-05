@@ -1,0 +1,35 @@
+﻿Please find the JD for Devops engineer below for 5-7 yrs exp. Please review and let me know if I have to make any modifications.
+
+Job Description for DevOps Engineer 
+
+Candidate will be primarily responsible to develop required automation as part of Install and configuration of Roaming analytics-Engineering division at Mobileum India Pvt Ltd using continuous integration and continuous deployment tools (CICD).
+He/She needs to utilize latest technology and best tools to develop and automate towards build, deploy and test on various OS(RHEL/Solaris) platforms.
+Candidate will interact with various teams like Engineering, Professional Service Organization, Quality teams in terms of design and develop the automation suite for CICD.
+CICD pipelines need to be developed to validate the product right from the time of development till integration. This includes automating the build, deploy and test phases at integration level for the Product installs/upgrades.
+
+
+Key Technical Competencies/Skills:
+
+Experience in Python and Ruby scripting
+Ability to visualize automation in CICD
+Good programming skills with scripting languages such as Python, Ruby
+Experience in Configuration tools like Puppet, Docker/Kubernates etc
+Source control with Git, SVN ( I have not mentioned CVS as it is hard to get CVS resource in the market)
+Strong knowledge of Continuous Integration and Build tools  (i.e.Jenkins, Maven/Ant, make)
+Ability to learn and adapt quickly to new technology
+Experience in Linux system administration
+Good verbal and written communication skills
+Works well in a team environment
+Good understanding on software development life cycle 
+
+Good to Possess :
+
+Experience in database products is a plus.
+Knowledge on code coverage tools is a plus
+Experience/knowledge on Perl/Shell scripting is an added advantage
+Experience/knowledge on cloud technologies like OpenStack is a plus
+
+
+Experience :
+5+ years relevant experience in Build, Release and Deployment using DevOps tools
+

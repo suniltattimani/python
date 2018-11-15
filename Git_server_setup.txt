@@ -1,0 +1,101 @@
+Git server setup :
+
+refer : https://www.linux.com/learn/how-run-your-own-git-server
+		https://git-scm.com/book/en/v2/Git-on-the-Server-Setting-Up-the-Server
+
+
+		
+		Install Git on your server
+In this tutorial we are considering a use-case where we have a remote server and a local server and we will work between these machines. For the sake of simplicity we will call them remote-server and local-server.
+
+First, install Git on both machines. You can install Git from the packages already available via the repos or your distros, or you can do it manually. In this article we will use the simpler method:
+
+sudo apt-get install git-core
+Then add a user for Git.
+
+sudo useradd git
+passwd git
+In order to ease access to the server let's set-up a password-less ssh login. First create ssh keys on your local machine:
+
+ssh-keygen -t rsa
+It will ask you to provide the location for storing the key, just hit Enter to use the default location. The second question will be to provide it with a pass phrase which will be needed to access the remote server. It generates two keys - a public key and a private key. Note down the location of the public key which you will need in the next step.
+
+Now you have to copy these keys to the server so that the two machines can talk to each other. Run the following command on your local machine:
+
+cat ~/.ssh/id_rsa.pub | ssh git@remote-server "mkdir -p ~/.ssh && cat >>  ~/.ssh/authorized_keys"
+Now ssh into the server and create a project directory for Git. You can use the desired path for the repo.
+
+git@server:~ $ mkdir -p /home/swapnil/project-1.git
+Then change to this directory:
+
+cd /home/swapnil/project-1.git
+Then create an empty repo:
+
+git init --bare
+Initialized empty Git repository in /home/swapnil/project-1.git
+We now need to create a Git repo on the local machine.
+
+mkdir -p /home/swapnil/git/project
+And change to this directory:
+
+cd /home/swapnil/git/project
+Now create the files that you need for the project in this directory. Stay in this directory and initiate git:
+
+git init 
+Initialized empty Git repository in /home/swapnil/git/project
+Now add files to the repo:
+
+git add .
+Now every time you add a file or make changes you have to run the add command above. You also need to write a commit message with every change in a file. The commit message basically tells what changes were made.
+
+git commit -m "message" -a
+[master (root-commit) 57331ee] message
+ 2 files changed, 2 insertions(+)
+ create mode 100644 GoT.txt
+ create mode 100644 writing.txt
+In this case I had a file called GoT (Game of Thrones review) and I made some changes, so when I ran the command it specified that changes were made to the file. In the above command '-a' option means commits for all files in the repo. If you made changes to only one you can specify the name of that file instead of using '-a'.
+
+An example:
+
+git commit -m "message" GoT.txt
+[master e517b10] message
+ 1 file changed, 1 insertion(+)
+Until now we have been working on the local server. Now we have to push these changes to the server so the work is accessible over the Internet and you can collaborate with other team members.
+
+git remote add origin ssh://git@remote-server/repo-<wbr< a="">>path-on-server..git
+Now you can push or pull changes between the server and local machine using the 'push' or 'pull' option:
+
+git push origin master
+If there are other team members who want to work with the project they need to clone the repo on the server to their local machine:
+
+git clone git@remote-server:/home/swapnil/project.git
+Here /home/swapnil/project.git is the project path on the remote server, exchange the values for your own server.
+
+Then change directory on the local machine (exchange project with the name of project on your server):
+
+cd /project
+Now they can edit files, write commit change messages and then push them to the server:
+
+git commit -m 'corrections in GoT.txt story' -a
+And then push changes:
+git push origin master
+		
+			
+GIt server side :
+
+$ git config user.name "sunil"
+$ git config user.email "sunil@abc.com"
+$ git config core.sharedRepository "all"
+$ git config receive.denyNonFastForwards True
+ 
+ 
+ groupadd git
+chgrp -R git .git
+chgrp -R git ./
+usermod -G -a git $(whoami)
+
+
+Git client side :
+
+git config --global core.fscache false
+git config core.autocrlf false

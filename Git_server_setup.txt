@@ -99,3 +99,32 @@ Git client side :
 
 git config --global core.fscache false
 git config core.autocrlf false
+
+
+
+=================
+
+To undo Commit in Git
+
+For a local commit
+git reset --soft HEAD~1
+or if you do not remember exactly in which commit it is, you might use
+
+git rm --cached <file>
+
+For a pushed commit
+The proper way of removing files from the repository history is using git filter-branch. That is,
+
+git filter-branch --index-filter 'git rm --cached <file>' HEAD
+But I recomnend you use this command with care. Read more at 
+========================
+
+graphical view of logs
+
+$ gitk --all
+$ git log --graph --oneline --decorate --all
+
+
+for i in $(cat file); do mkdir -p products/$i;done
+
+ find . -type d -exec touch {}/README \; - creates file in multiple dir and sub dirs

@@ -4,7 +4,10 @@ pipeline {
   
   stages {
     stage ( "Build") {
+// Step is for building the application
       
+/* This is for multiple comment syntax
+entering second line of comment */
       steps {
         echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
         echo 'Building the application...'

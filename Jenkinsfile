@@ -41,9 +41,11 @@ entering second line of comment */
 
   }
   post {
-          always {
-              sh 'sudo rm -rf *@tmp'
-              cleanWs()
+          always
+            cleanWs()
+            dir("${env.WORKSPACE}@tmp") {
+                          deleteDir()
+            }
           }
       }
   

@@ -38,6 +38,12 @@ entering second line of comment */
       }
       
     }
+    post {
+        always {
+            sh 'sudo rm -rf *@tmp'
+            cleanWs()
+        }
+    }
     
   }
   
